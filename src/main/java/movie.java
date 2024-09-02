@@ -3,6 +3,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
+import java.time.LocalDateTime;
+
 @Entity
 public class movie {
     @Id
@@ -14,4 +16,34 @@ public class movie {
     private String status; //"já vi" or "Quero ver"
 
     // Getters e Setters
+    public Long getId(){
+        return  id;
+    }
+
+    public void setId(Long id){
+        this.id = id;
+    }
+    // public - acessado a partir de qualquer lugar do código
+    // void - metodo que retornar nenhum valor
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus (String Status){
+        this.status = status;
+    }
+
+    public LocalDateTime getAddedAt(){
+        return AddedAt;
+    }
+
+    public void setAddedAt(LocalDateTime addedAt){
+        this.AddedAt = addedAt;
+    }
 }
+
