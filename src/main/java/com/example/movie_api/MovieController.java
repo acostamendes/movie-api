@@ -3,6 +3,7 @@ package com.example.movie_api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+
 import java.util.List;
 
 @RestController
@@ -20,7 +21,7 @@ public class MovieController {
 
     @PostMapping
     public Movie addMovie(@RequestParam String title, @RequestParam String status){
-        return movieService.addMovie(title, status);
+        return MovieService.saveMovie(title, status);
     }
 
     @DeleteMapping("/{id}")
