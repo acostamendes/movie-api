@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -45,6 +46,15 @@ public class MovieService {
     // Método para deletar um filme pelo Id
     public void deleteMovie(Long id) {
         movieRepository.deleteById(id);
+    }
+
+    // Método para adicionar um novo filme
+    public Movie addMovie(String title, String status) {
+        Movie movie = new Movie();
+        movie.setTitle(title);
+        movie.setStatus(status);
+        movie.setAddedAt(LocalDateTime.now());
+        return saveMovie(movie);
     }
 }
 

@@ -12,16 +12,16 @@ public class movie {
     private Long Id;
     private Long movie_Id;
     private String title;
-    private LocalDateTime dateTime;
+    private LocalDateTime AddedAt;
     private String status; //"já vi" or "Quero ver"
 
     // Getters e Setters
     public Long getId(){
-        return  id;
+        return  Id;
     }
 
     public void setId(Long id){
-        this.id = id;
+        this.Id = id;
     }
     // public - acessado a partir de qualquer lugar do código
     // void - metodo que retornar nenhum valor

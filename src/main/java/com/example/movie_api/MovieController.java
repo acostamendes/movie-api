@@ -20,9 +20,10 @@ public class MovieController {
     }
 
     @PostMapping
-    public Movie addMovie(@RequestParam String title, @RequestParam String status){
-        return MovieService.saveMovie(title, status);
+    public Movie addMovie(@RequestParam String title, @RequestParam String status) {
+        return movieService.addMovie(title, status);
     }
+
 
     @DeleteMapping("/{id}")
     public void deleteMovie(@PathVariable Long Id){
