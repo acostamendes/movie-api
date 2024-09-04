@@ -9,47 +9,42 @@ import java.util.List;
 @Service
 public class MovieService {
 
-
-    @value("${tmdb.api.key}")
+    @Value("${tmdb.api.key}")
     private String apiKey;
 
     private final RestTemplate restTemplate;
     private final MovieRepository movieRepository;
 
-    public MovieService(RestTemplate restTemplate, MovieRepository movieRepository){
+    // Construtor para injeção de dependência
+    public MovieService(RestTemplate restTemplate, MovieRepository movieRepository) {
         this.restTemplate = restTemplate;
         this.movieRepository = movieRepository;
     }
 
-    public TmdbService(RestTemplate restTemplate){
-        this.restTemplate=restTemplate;
+    // Método para buscar filmes na API externa
+    public String searchMovie(String query) {
+        String url = "https://api.themoviedb.org/3/search/movie?api_key=" + apiKey + "&query=" + query;
+        return restTemplate.getForObject(url, String.class);
     }
 
-    // metodo para buscar filmes na api externa
-    public String searchMovie(string query){
-        String url="https://api.themoviedb.org/3/search/movie?api_key=" + apiKey + "&query=" + query;
-        return restTemplate.getForObject(url,string.Class);
-    }
-
-    // metodo para salvar um filme no banco de dados
-    public Movie saveMovie(Movie movie){
+    // Método para salvar um filme no banco de dados
+    public Movie saveMovie(Movie movie) {
         return movieRepository.save(movie);
     }
 
-    // metodo para listar todos os filmes no banco de  dados
-
-    public List<Movie> getAllMovies(){
-        return movieRepository.findAll()
+    // Método para listar todos os filmes no banco de dados
+    public List<Movie> getAllMovies() {
+        return movieRepository.findAll();
     }
 
-    // metodo para encontrar um filme por Id
-    public Movie findmovieById(Long Id){
-        return movieRepository.findyById(Id).orElse(null);
+    // Método para encontrar um filme por Id
+    public Movie findMovieById(Long id) {
+        return movieRepository.findById(id).orElse(null);
     }
 
-    // metodo para deletar um filme pelo Id
-    public void deleteMovie(Long Id){
+    // Método para deletar um filme pelo Id
+    public void deleteMovie(Long id) {
         movieRepository.deleteById(id);
-
     }
 }
+
