@@ -19,7 +19,7 @@ public class MovieController {
     }
 
     @PostMapping
-    public  Movie addMovie(@RequestParam String title, @RequestParam String status){
+    public Movie addMovie(@RequestParam String title, @RequestParam String status){
         return movieService.addMovie(title, status);
     }
 
