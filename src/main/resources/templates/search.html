@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Resultados da Pesquisa</title>
+</head>
+<body>
+<h1>Resultados da Pesquisa</h1>
+<ul th:if="${movies}">
+    <!-- Iterar sobre os resultados da pesquisa e exibir os filmes -->
+    <li th:each="movie : ${movies}">
+        <span th:text="${movie.title}">Título do Filme</span>
+        <form action="/add" method="post">
+            <input type="hidden" name="movieId" th:value="${movie.id}">
+            <input type="hidden" name="titulo" th:value="${movie.title}">
+            <button type="submit" name="status" value="Ja vi">Já vi</button>
+            <button type="submit" name="status" value="Quero ver">Quero ver</button>
+        </form>
+    </li>
+</ul>
+</body>
+</html>
