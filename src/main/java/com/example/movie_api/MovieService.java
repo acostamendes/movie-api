@@ -10,10 +10,11 @@ import java.util.List;
 @Service
 public class MovieService {
 
+    private final RestTemplate restTemplate;
+
     @Value("${tmdb.api.key}")
     private String apiKey;
 
-    private final RestTemplate restTemplate;
     private final MovieRepository movieRepository;
 
     // Construtor para injeção de dependência
